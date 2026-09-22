@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: Payment-Platform
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/payment-platform
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: true
