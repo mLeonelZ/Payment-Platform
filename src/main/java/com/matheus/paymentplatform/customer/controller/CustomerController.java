@@ -3,6 +3,7 @@ package com.matheus.paymentplatform.customer.controller;
 import com.matheus.paymentplatform.customer.dto.CustomerRequest;
 import com.matheus.paymentplatform.customer.dto.CustomerResponse;
 import com.matheus.paymentplatform.customer.service.CustomerService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<CustomerResponse> create(@RequestBody CustomerRequest request){
+    public ResponseEntity<CustomerResponse> create(@Valid @RequestBody CustomerRequest request){
         CustomerResponse response = service.create(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
