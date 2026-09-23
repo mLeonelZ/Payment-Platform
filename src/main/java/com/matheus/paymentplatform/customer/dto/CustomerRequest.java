@@ -1,15 +1,15 @@
 package com.matheus.paymentplatform.customer.dto;
 
+import com.matheus.paymentplatform.customer.validation.ValidCpf;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 
 public record CustomerRequest (
         @NotBlank
         String name,
 
         @NotBlank
-        @Pattern(regexp = "\\d{11}")
+        @ValidCpf
         String cpf,
 
         @NotBlank
