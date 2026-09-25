@@ -1,6 +1,8 @@
 package com.matheus.paymentplatform.customer.validation;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -17,29 +19,18 @@ public class CpfValidatorTest {
         assertTrue(result);
     }
 
-    @Test
-    void shouldReturnFalseForInvalidCpf() {
-        String cpf = "94105810010";
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "94105810010",
+            "123456789",
+            "123456789012"
+    })
+    void shouldReturnFalseForInvalidCpf(String cpf) {
         boolean result = validator.isValid(cpf, null);
 
         assertFalse(result);
     }
 
-    @Test
-    void shouldReturnFalseForCpfWithLessThan11Digits() {
-        String cpf = "123456789";
-        boolean result = validator.isValid(cpf, null);
-
-        assertFalse(result);
-    }
-
-    @Test
-    void shouldReturnFalseForCpfWithMoreThan11Digits() {
-        String cpf = "123456789012";
-        boolean result = validator.isValid(cpf, null);
-
-        assertFalse(result);
-    }
 
 
 
